@@ -11,7 +11,6 @@ class TextCleaner(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, X, y=None):
-        # Convert X to a Pandas Series if not already
         if not hasattr(X, 'apply'):
             import pandas as pd
             X = pd.Series(X)

@@ -1,6 +1,6 @@
 
 function checkEmail() {
-    let emailBody = document.querySelector(".a3s"); // Gmail email body selector
+    let emailBody = document.querySelector(".a3s");
     if (emailBody) {
         let emailText = emailBody.innerText;
         chrome.runtime.sendMessage({ action: "checkEmail", emailText: emailText });

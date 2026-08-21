@@ -6,7 +6,7 @@ import pandas as pd
 
 app = Flask(__name__)
 CORS(app)
-# Load your pickled pipeline
+
 with open("phishing_model.pkl", "rb") as f:
     pipeline = pickle.load(f)
 
@@ -14,8 +14,7 @@ with open("phishing_model.pkl", "rb") as f:
 def predict():
     data = request.get_json()
     email_text = data.get("email_text", "")
-    
-    # Convert the email text into a pandas Series so our pipeline works correctly
+
     email_series = pd.Series([email_text])
     prediction = int(pipeline.predict(email_series)[0])
     probability = float(pipeline.predict_proba(email_series)[0][1])

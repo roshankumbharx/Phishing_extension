@@ -21,7 +21,6 @@ function notifyUser(isPhishing, probability) {
     });
 }
 
-// Listen for a message from content.js (where we'll extract email text)
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "checkEmail") {
         checkEmailForPhishing(message.emailText).then(data => {
